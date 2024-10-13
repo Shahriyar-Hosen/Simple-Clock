@@ -114,8 +114,7 @@ body {
   height: 15px;
   border-radius: 50%;
   background: var(--clr);
-  box-shadow: 0 0 25px 5px var(--clr), 0 0 50px var(--clr); /* Adjust the blur and spread */
-  /* filter: blur(1px); Add a filter to increase the blur */
+  box-shadow: 0 0 50px 7px var(--clr), 0 0 50px var(--clr);
 }
 
 /* digital clock */
