@@ -38,10 +38,20 @@
     <div class="ful-screen">
       <button onclick="toggleFullscreen()">Full Screen</button>
     </div>
+
+    <!-- Audio Elements -->
+    <audio id="secondSound" src="second.mp3"></audio>
+    <audio id="minuteSound" src="minute.mp3"></audio>
+    <audio id="hourSound" src="hour.mp3"></audio>
+
     <script>
       let hr = document.querySelector("#hr");
       let mn = document.querySelector("#mn");
       let sc = document.querySelector("#sc");
+
+      let lastSeconds = new Date().getSeconds();
+      let lastMinutes = new Date().getMinutes();
+      let lastHours = new Date().getHours();
 
       setInterval(() => {
         let day = new Date();
@@ -77,6 +87,26 @@
         minutes.innerHTML = m;
         seconds.innerHTML = s;
         ampm.innerHTML = am_pm;
+
+        // Play sound if seconds change
+        if (s !== lastSeconds) {
+          document.getElementById("secondSound").play();
+        }
+
+        // Play sound if minutes change
+        if (m !== lastMinutes) {
+          document.getElementById("minuteSound").play();
+        }
+
+        // Play sound if hours change
+        if (h !== lastHours) {
+          document.getElementById("hourSound").play();
+        }
+
+        // Update the last values
+        lastSeconds = s;
+        lastMinutes = m;
+        lastHours = h;
       }, 1000);
 
       const toggleFullscreen = () => {
