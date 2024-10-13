@@ -37,8 +37,8 @@
     </main>
     <div class="top-right-corner">
       <button class="mute" onclick="toggleMute()">Mute</button>
-      <button class="ful-screen" onclick="toggleFullscreen()">
-        | Full Screen
+      <button class="full-screen" onclick="toggleFullscreen()">
+        Full Screen
       </button>
     </div>
 
@@ -68,7 +68,7 @@
 
       function updateMuteButton() {
         const muteButton = document.querySelector(".mute");
-        muteButton.textContent = isMuted ? "Unmute" : "Mute";
+        muteButton.textContent = isMuted ? "Unmute |" : "Mute |";
       }
 
       setInterval(() => {
@@ -106,9 +106,7 @@
         seconds.innerHTML = s;
         ampm.innerHTML = am_pm;
 
-        console.log("🚀 ~ setInterval ~ isMuted:", isMuted);
         if (!isMuted) {
-          console.log("🚀 ~ setInterval ~ isMuted:", isMuted);
           // Play sound if seconds change
           if (s !== lastSeconds) {
             document.getElementById("secondSound").play();
@@ -131,10 +129,17 @@
         lastHours = h;
       }, 1000);
 
+      const toggleScreen = (full) => {
+        const muteButton = document.querySelector(".full-screen");
+        muteButton.textContent = full ? "Exit Full Screen" : "Full Screen";
+      };
+
       const toggleFullscreen = () => {
         !document.fullscreenElement
-          ? document.documentElement.requestFullscreen()
-          : document.exitFullscreen && document.exitFullscreen();
+          ? document.documentElement.requestFullscreen() && toggleScreen(true)
+          : document.exitFullscreen &&
+            document.exitFullscreen() &&
+            toggleScreen(false);
       };
     </script>
   </body>
