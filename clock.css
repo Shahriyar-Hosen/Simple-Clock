@@ -12,6 +12,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: #050018;
+  position: relative;
 }
 .container {
   position: relative;
