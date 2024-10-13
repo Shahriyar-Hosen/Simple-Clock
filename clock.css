@@ -16,7 +16,7 @@ body {
 }
 .container {
   position: relative;
-  background: #506175;
+  background: #2e4055;
   /* min-height: 500px; */
   border-radius: 20px;
   border-top-left-radius: 225px;
@@ -34,7 +34,7 @@ body {
   position: relative;
   width: 450px;
   height: 450px;
-  background: #506175;
+  background: #2e4055;
   border-radius: 50%;
   box-shadow: 10px 50px 70px rgba(0, 0, 0, 25),
     inset 5px 5px 10px rgba(0, 0, 0, 5),
@@ -50,7 +50,7 @@ body {
   position: absolute;
   height: 8px;
   width: 8px;
-  background: #506175;
+  background: #2e4055;
   border: 3px solid #fff;
   border-radius: 50%;
   z-index: 100000;
