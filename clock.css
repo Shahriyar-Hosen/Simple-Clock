@@ -11,7 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #03000f;
+  background: #050018;
 }
 .container {
   position: relative;
@@ -157,5 +157,22 @@ body {
   }
   50% {
     opacity: 0;
+  }
+}
+
+.ful-screen {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  && button {
+    background: none;
+    border: none;
+    color: slategray;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    &:focus {
+      outline: none;
+    }
   }
 }
