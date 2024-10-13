@@ -35,8 +35,11 @@
         <div id="ampm">AM</div>
       </section>
     </main>
-    <div class="ful-screen">
-      <button onclick="toggleFullscreen()">Full Screen</button>
+    <div class="top-right-corner">
+      <button class="mute" onclick="toggleMute()">Mute</button>
+      <button class="ful-screen" onclick="toggleFullscreen()">
+        | Full Screen
+      </button>
     </div>
 
     <!-- Audio Elements -->
@@ -52,6 +55,21 @@
       let lastSeconds = new Date().getSeconds();
       let lastMinutes = new Date().getMinutes();
       let lastHours = new Date().getHours();
+
+      // Check local storage for mute state
+      let isMuted = localStorage.getItem("isMuted") === "true";
+      updateMuteButton();
+
+      function toggleMute() {
+        isMuted = !isMuted;
+        localStorage.setItem("isMuted", isMuted);
+        updateMuteButton();
+      }
+
+      function updateMuteButton() {
+        const muteButton = document.querySelector(".mute");
+        muteButton.textContent = isMuted ? "Unmute" : "Mute";
+      }
 
       setInterval(() => {
         let day = new Date();
@@ -88,19 +106,23 @@
         seconds.innerHTML = s;
         ampm.innerHTML = am_pm;
 
-        // Play sound if seconds change
-        if (s !== lastSeconds) {
-          document.getElementById("secondSound").play();
-        }
+        console.log("🚀 ~ setInterval ~ isMuted:", isMuted);
+        if (!isMuted) {
+          console.log("🚀 ~ setInterval ~ isMuted:", isMuted);
+          // Play sound if seconds change
+          if (s !== lastSeconds) {
+            document.getElementById("secondSound").play();
+          }
 
-        // Play sound if minutes change
-        if (m !== lastMinutes) {
-          document.getElementById("minuteSound").play();
-        }
+          // Play sound if minutes change
+          if (m !== lastMinutes) {
+            document.getElementById("minuteSound").play();
+          }
 
-        // Play sound if hours change
-        if (h !== lastHours) {
-          document.getElementById("hourSound").play();
+          // Play sound if hours change
+          if (h !== lastHours) {
+            document.getElementById("hourSound").play();
+          }
         }
 
         // Update the last values
